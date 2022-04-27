@@ -1,0 +1,3 @@
+// lists all documents with given name
+
+db.school.findOne({name: "Holberton school"})
