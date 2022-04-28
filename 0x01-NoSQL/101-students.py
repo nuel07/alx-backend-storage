@@ -1,4 +1,4 @@
-#!/usr/bin/env pythnon3
+#!/usr/bin/env python3
 ''' pymongo module for average scores '''
 
 
