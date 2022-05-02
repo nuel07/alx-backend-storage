@@ -3,7 +3,7 @@
 
 import redis
 import uuid
-from typing import Union, Callable Optional
+from typing import Union, Callable, Optional
 
 
 class Cache():
