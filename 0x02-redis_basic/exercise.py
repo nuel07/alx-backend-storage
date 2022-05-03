@@ -17,6 +17,7 @@ def count_calls(method: Callable) -> Callable:
         return method(self, *args, **kwds)
     return wrapper
 
+
 def call_history(method: Callable) -> Callable:
     ''' another decorator function that returns a callble '''
     @wraps(method)
@@ -31,6 +32,7 @@ def call_history(method: Callable) -> Callable:
         self._redis.rpush(output_key, str(output_list))
         return output_list
     return wrapper
+
 
 def replay(func: Callable):
     ''' displays history of call of a particular function '''
@@ -52,6 +54,7 @@ def replay(func: Callable):
         )
         print(my_output)
 
+
 class Cache():
     ''' a cache class '''
     def __init__(self):
@@ -67,7 +70,7 @@ class Cache():
         self._redis.set(gen_key, data)
         return gen_key
 
-    def get(self, key:str, fn:Optional[Callable]=None) -> Union[str, bytes, int, float]:
+    def get(self, key:str, fn:Optional[Callable] = None) -> Union[str, bytes, int, float]:
         ''' get method key value '''
         val = self._redis.get(key)
         return val if not fn else fn(val)
@@ -80,4 +83,4 @@ class Cache():
     def get_int(self, key) -> int:
         ''' returns int '''
         return self.get(key, int)
-    
+
