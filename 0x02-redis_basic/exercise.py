@@ -70,8 +70,7 @@ class Cache():
         self._redis.set(gen_key, data)
         return gen_key
 
-    def get(self, key: str, fn: Optional[Callable] = None) ->
-    Union[str, bytes, int, float]:
+    def get(self, key: str, fn: Optional[Callable] = None) -> Union[str, bytes, int, float]:
         ''' get method key value '''
         val = self._redis.get(key)
         return val if not fn else fn(val)
